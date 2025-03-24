@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/propmgmt/static/css/main.f855e6bc.css",
+    "main.js": "/propmgmt/static/js/main.b10e2411.js",
+    "static/js/453.352b0e8d.chunk.js": "/propmgmt/static/js/453.352b0e8d.chunk.js",
+    "static/media/logo.svg": "/propmgmt/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/propmgmt/index.html",
+    "main.f855e6bc.css.map": "/propmgmt/static/css/main.f855e6bc.css.map",
+    "main.b10e2411.js.map": "/propmgmt/static/js/main.b10e2411.js.map",
+    "453.352b0e8d.chunk.js.map": "/propmgmt/static/js/453.352b0e8d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.b10e2411.js"
+  ]
+}
