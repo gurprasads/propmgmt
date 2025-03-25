@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { web3, contract } from "./web3";
+import walletConnectFcn from "./walletconnect.js";
+import MyGroup from "./components/MyGroup.jsx";
 
 function App() {
   const [properties, setProperties] = useState([]);
@@ -9,6 +11,38 @@ function App() {
   const [location, setLocation] = useState("");
   const [newOwner, setNewOwner] = useState("");
   const [propertyId, setPropertyId] = useState("");
+  const [walletData, setWalletData] = useState();
+	const [account, setAccount] = useState();
+	const [network, setNetwork] = useState();
+	const [contractAddress, setContractAddress] = useState();
+
+	const [connectTextSt, setConnectTextSt] = useState("🔌 Connect here...");
+	const [contractTextSt, setContractTextSt] = useState();
+	const [executeTextSt, setExecuteTextSt] = useState();
+
+	const [connectLinkSt, setConnectLinkSt] = useState("");
+	const [contractLinkSt, setContractLinkSt] = useState();
+	const [executeLinkSt, setExecuteLinkSt] = useState();
+
+  async function connectWallet() {
+		if (account !== undefined) {
+			setConnectTextSt(`🔌 Account ${account} already connected ⚡ ✅`);
+		} else {
+			const wData = await walletConnectFcn();
+
+			let newAccount = wData[0];
+			let newNetwork = wData[2];
+			if (newAccount !== undefined) {
+				setConnectTextSt(`🔌 Account ${newAccount} connected ⚡ ✅`);
+				setConnectLinkSt(`https://hashscan.io/${newNetwork}/account/${newAccount}`);
+
+				setWalletData(wData);
+				setAccount(newAccount);
+				setNetwork(newNetwork);
+				setContractTextSt();
+			}
+		}
+	}
 
   useEffect(() => {
     loadProperties();
@@ -39,6 +73,10 @@ function App() {
   return (
     <div>
       <h1>Property Management DApp</h1>
+      <div>
+        <MyGroup fcn={connectWallet} buttonLabel={"Connect Wallet"} text={connectTextSt} link={connectLinkSt} />
+      </div>
+      
       <div>
         <h2>Add Property</h2>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
