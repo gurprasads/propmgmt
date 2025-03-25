@@ -53,6 +53,7 @@ function App() {
       </div>
       <div>
         <h2>Properties</h2>
+        <button onClick={loadProperties}>Load Properties</button>
         <ul>
           {properties.map((property) => (
             <li key={property.id}>

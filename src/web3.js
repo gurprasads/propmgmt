@@ -1,5 +1,6 @@
 import Web3 from "web3";
 import { contractABI } from "./contractABI";
+import { contractAddress } from "./contractABI";
 
 let web3;
 
